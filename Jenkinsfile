@@ -1,11 +1,15 @@
 pipeline {
-  agent any
+      agent {
+        docker {
+            image 'docker:latest' // Use a imagem Docker que contém o Docker CLI
+        }
+    }
 
   stages {
     stage('Build Docker Image'){
       steps {
         script {
-          dockerapp = docker.build("fabricioveronez/guia-jenkins:${env.BUILD_ID}", '-f ./src/Dockerfile ./src')      
+          dockerapp = docker.build("fabricioveronez/guia-jenkins:${env.BUILD_ID}", './src')     
         }
       }
     }
