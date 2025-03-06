@@ -9,7 +9,7 @@ pipeline {
     stage('Build Docker Image'){
       steps {
         script {
-          dockerapp = docker.build("fabricioveronez/guia-jenkins:${env.BUILD_ID}", './src')     
+          dockerapp = docker.build("cjanderson/guia-jenkins:${env.BUILD_ID}", './src')     
         }
       }
     }
